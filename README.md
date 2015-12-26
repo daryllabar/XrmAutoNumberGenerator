@@ -1,4 +1,4 @@
-# XrmAutoNumberGenerator [![Build status](https://ci.appveyor.com/api/github/webhook?id=1j4bb156pusom4i2?svg=true)](https://ci.appveyor.com/project/daryllabar/xrmautonumbergenerator)
+# XrmAutoNumberGenerator [![Build status](https://ci.appveyor.com/api/projects/status/1j4bb156pusom4i2?svg=true)](https://ci.appveyor.com/project/daryllabar/xrmautonumbergenerator)
 
 [![Join the chat at https://gitter.im/daryllabar/XrmAutoNumberGenerator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/daryllabar/XrmAutoNumberGenerator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
