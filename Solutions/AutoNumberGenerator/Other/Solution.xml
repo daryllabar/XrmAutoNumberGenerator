@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="8.0.0000.2086" SolutionPackageVersion="8.0" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SolutionManifest>
+    <UniqueName>AutoNumberGenerator</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="Auto Number Generator" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Allows for defining Auto-Numbering for any entity / field" languagecode="1033" />
+    </Descriptions>
+    <Version>1.0.0.0</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>daryllabar</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Daryl LaBar" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Website: http://www.dotnetdust.blogspot.com/&#xA;Twitter: @ddlabar&#xA;GitHub: https://github.com/daryllabar&#xA;StackOverflow: http://stackexchange.com/users/80420/daryl" languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl>http://www.dotnetdust.blogspot.com/</SupportingWebsiteUrl>
+      <CustomizationPrefix>dlab</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>74249</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City>Indianapolis</City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince>IN</StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="dlab_autonumbering" behavior="0" />
+      <RootComponent type="61" schemaName="dlab_/images/ticket_16.png" behavior="0" />
+      <RootComponent type="61" schemaName="dlab_/images/ticket_32.png" behavior="0" />
+      <RootComponent type="61" schemaName="dlab_/scripts/DLaB.AutoNumbering.js" behavior="0" />
+      <RootComponent type="91" schemaName="DLaB.XrmAutoNumberGenerator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89" behavior="0" />
+      <RootComponent type="92" id="{2a15647f-96ab-e511-80e1-6c3be5a8a258}" behavior="0" />
+      <RootComponent type="92" id="{a63ed0d8-96ab-e511-80e1-6c3be5a852b0}" behavior="0" />
+      <RootComponent type="92" id="{f37f2291-96ab-e511-80e1-6c3be5a8a258}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies />
+  </SolutionManifest>
+</ImportExportXml>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource>
+  <WebResourceId>{c0af180a-96ab-e511-80da-6c3be5bd3f5c}</WebResourceId>
+  <Name>dlab_/images/ticket_32.png</Name>
+  <DisplayName>ticket_32.png</DisplayName>
+  <WebResourceType>5</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/dlab_imagesticket_32pngC0AF180A-96AB-E511-80DA-6C3BE5BD3F5C</FileName>
+</WebResource>

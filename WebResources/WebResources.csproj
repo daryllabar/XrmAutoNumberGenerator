@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{44748D2E-F38C-4040-93F7-C7F4666D0654}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebResources</RootNamespace>
+    <AssemblyName>WebResources</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dlab_\images\ticket_16.png" />
+    <Content Include="dlab_\images\ticket_32.png" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddItemCampaign.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddItemCampaignActivity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddListMembersList.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddMemberList.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddMembersTeam.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddPrivilegesRole.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddProductToKit.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddRecurrence.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddSolutionComponent.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddToQueue.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AddUserToRecordTeam.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Assign.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Associate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.AutoMapEntity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.BackgroundSendEmail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Book.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.BulkDelete.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.BulkDetectDuplicates.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CalculateActualValueOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CalculateTotalTimeIncident.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CanBeReferenced.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CanBeReferencing.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CancelContract.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CancelSalesOrder.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CanManyToMany.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CheckIncomingEmail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CheckPromoteEmail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CloneContract.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CloseIncident.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CloseQuote.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CompoundUpdateDuplicateDetectionRule.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ConvertKitToProduct.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ConvertOwnerTeamToAccessTeam.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ConvertProductToKit.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ConvertQuoteToSalesOrder.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ConvertSalesOrderToInvoice.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CopyCampaign.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CopyCampaignResponse.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CopyDynamicListToStatic.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CopyMembersList.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CopySystemForm.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Create.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CreateActivitiesList.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CreateException.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CreateInstance.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.CreateWorkflowFromTemplate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Delete.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.DeleteAuditData.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.DeleteOpenInstances.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.DeliverIncomingEmail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.DeliverPromoteEmail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.DeprovisionLanguage.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Disassociate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.DistributeCampaignActivity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.DownloadReportDefinition.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ExecuteByIdSavedQuery.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ExecuteByIdUserQuery.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ExecuteMultiple.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ExecuteWorkflow.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ExpandCalendar.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ExportMappingsImportMap.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.FetchXmlToQueryExpression.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.FindParentResourceGroup.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.FulfillSalesOrder.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GenerateInvoiceFromOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GenerateQuoteFromOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GenerateSalesOrderFromOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GetAllTimeZonesWithDisplayName.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GetInvoiceProductsFromOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GetQuantityDecimal.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GetQuoteProductsFromOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GetReportHistoryLimit.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GetSalesOrderProductsFromOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GetTimeZoneCodeByLocalizedName.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GetTrackingTokenEmail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.GrantAccess.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ImportMappingsImportMap.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ImportRecordsImport.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.InitializeFrom.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.InstallSampleData.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.InstantiateFilters.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.InstantiateTemplate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.IsComponentCustomizable.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.IsDataEncryptionActive.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.IsValidStateTransition.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.LocalTimeFromUtcTime.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.LockInvoicePricing.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.LockSalesOrderPricing.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.LoseOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Merge.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ModifyAccess.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ParseImport.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ProcessInboundEmail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.PropagateByExpression.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ProvisionLanguage.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.PublishAllXml.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.PublishDuplicateRule.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.PublishXml.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.QualifyLead.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.QualifyMemberList.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.QueryExpressionToFetchXml.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.QueryMultipleSchedules.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.QuerySchedule.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ReassignObjectsOwner.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ReassignObjectsSystemUser.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Recalculate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemoveItemCampaign.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemoveItemCampaignActivity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemoveMemberList.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemoveMembersTeam.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemoveParent.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemovePrivilegeRole.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemoveProductFromKit.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemoveSolutionComponent.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RemoveUserFromRecordTeam.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RenewContract.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ReplacePrivilegesRole.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Reschedule.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ResetUserFilters.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Retrieve.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveAbsoluteAndSiteCollectionUrl.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveAllChildUsersSystemUser.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveAttributeChangeHistory.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveAuditDetails.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveAvailableLanguages.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveBusinessHierarchyBusinessUnit.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveByGroupResource.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveByResourceResourceGroup.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveByResourcesService.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveByTopIncidentProductKbArticle.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveByTopIncidentSubjectKbArticle.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveDataEncryptionKey.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveDependenciesForDelete.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveDependenciesForUninstall.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveDependentComponents.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveDeploymentLicenseType.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveDeprovisionedLanguages.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveDuplicates.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveExchangeRate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveFilteredForms.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveFormattedImportJobResults.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveInstalledLanguagePacks.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveInstalledLanguagePackVersion.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveLicenseInfo.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveLocLabels.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveMembersBulkOperation.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveMetadataChanges.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveMissingDependencies.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveMultiple.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveOrganizationResources.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveParentGroupsResourceGroup.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrievePersonalWall.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrievePrincipalAccess.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrievePrincipalAttributePrivileges.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrievePrivilegeSet.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveProvisionedLanguagePackVersion.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveProvisionedLanguages.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveRecordChangeHistory.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveRecordWall.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveRequiredComponents.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveRolePrivilegesRole.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveSharedPrincipalsAndAccess.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveSubGroupsResourceGroup.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveTeamPrivileges.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveTimestamp.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveUnpublished.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveUserPrivileges.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RetrieveVersion.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ReviseQuote.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.RevokeAccess.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Rollup.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Search.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SearchByBodyKbArticle.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SearchByKeywordsKbArticle.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SearchByTitleKbArticle.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SendBulkMail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SendEmail.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SendEmailFromTemplate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SendFax.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SendTemplate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SetBusinessEquipment.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SetBusinessSystemUser.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SetDataEncryptionKey.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SetParentBusinessUnit.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SetParentSystemUser.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SetParentTeam.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SetReportRelated.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.SetState.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.TransformImport.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.TriggerServiceEndpointCheck.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.UninstallSampleData.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.UnlockInvoicePricing.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.UnlockSalesOrderPricing.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.UnpublishDuplicateRule.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Update.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.UtcTimeFromLocalTime.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.Validate.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ValidateRecurrenceRule.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.ValidateSavedQuery.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.WhoAmI.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.WinOpportunity.js" />
+    <Content Include="dlab_\scripts\messages\Sdk.WinQuote.js" />
+    <Content Include="dlab_\scripts\Sdk.Soap.min.js" />
+    <Content Include="dlab_\scripts\Sdk.Soap.vsdoc.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <TypeScriptCompile Include="dlab_\scripts\DLaB.AutoNumbering.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\xrm\parature.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\xrm\xrm.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug No ILMerge|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>19540</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:19540/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

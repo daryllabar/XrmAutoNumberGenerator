@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedquery>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>0</CanBeDeleted>
+  <isquickfindquery>0</isquickfindquery>
+  <isprivate>0</isprivate>
+  <isdefault>1</isdefault>
+  <returnedtypecode>10005</returnedtypecode>
+  <savedqueryid>{8e5da96b-928f-4cc3-9b71-80a1cca888a7}</savedqueryid>
+  <layoutxml>
+    <grid name="resultset" object="10005" jump="dlab_name" select="1" icon="1" preview="1">
+      <row name="result" id="dlab_autonumberingid">
+        <cell name="dlab_name" width="300" />
+        <cell name="createdon" width="125" />
+      </row>
+    </grid>
+  </layoutxml>
+  <querytype>1</querytype>
+  <fetchxml>
+    <fetch version="1.0" mapping="logical">
+      <entity name="dlab_autonumbering">
+        <attribute name="dlab_autonumberingid" />
+        <attribute name="dlab_name" />
+        <attribute name="createdon" />
+        <order attribute="dlab_name" descending="false" />
+      </entity>
+    </fetch>
+  </fetchxml>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <LocalizedNames>
+    <LocalizedName description="Auto Numbering Advanced Find View" languagecode="1033" />
+  </LocalizedNames>
+</savedquery>
