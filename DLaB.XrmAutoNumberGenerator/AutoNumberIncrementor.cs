@@ -1,6 +1,8 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using DLaB.Xrm;
 using DLaB.Xrm.Plugin;
 using Microsoft.Xrm.Sdk;
@@ -41,22 +43,19 @@ namespace DLaB.XrmAutoNumberGenerator
 
         public override void RegisterEvents()
         {
-            RegisteredEvents.AddRange(new RegisteredEventBuilder(PipelineStage.PreOperation, MessageType.Create).Build());
+            RegisteredEvents.AddRange(new RegisteredEventBuilder(PipelineStage.PreValidation, MessageType.Create).Build());
         }
 
         protected override void ExecuteInternal(LocalPluginContext context)
         {
             var target = context.GetTarget<Entity>();
             var autoNumberManagers = AutoNumberManagersByEntity.GetOrAddSafe(_settingLock, target.LogicalName,
-                logicalName =>
-                    context.SystemOrganizationService.GetEntities<dlab_AutoNumbering>(
-                        dlab_AutoNumbering.Fields.dlab_EntityName, logicalName).
-                        Select(s => new AutoNumberManager(s)).ToArray());
+                logicalName => context.SystemOrganizationService.GetEntities<dlab_AutoNumbering>(dlab_AutoNumbering.Fields.dlab_EntityName, logicalName).
+                    Select(s => new AutoNumberManager(s)).ToArray());
 
             if (autoNumberManagers.Length == 0)
             {
-                throw new InvalidPluginExecutionException("No Auto-Number Settings found for Entity " +
-                                                          target.LogicalName);
+                throw new InvalidPluginExecutionException("No Auto-Number Settings found for Entity " + target.LogicalName);
             }
 
             // ReSharper disable once ForCanBeConvertedToForeach - Not sure if a foreach enumeration is thread safe
@@ -116,7 +115,35 @@ namespace DLaB.XrmAutoNumberGenerator
             /// <param name="context">Plugin Context</param>
             public void EnqueueBatch(LocalPluginContext context)
             {
-                Setting = dlab_AutoNumbering.EnqueueNextBatch(context.SystemOrganizationService, Setting, AutoNumberBatch);
+                var count = 1;
+                while (true)
+                {
+                    try
+                    {
+                        Setting = dlab_AutoNumbering.EnqueueNextBatch(context.SystemOrganizationService, Setting, AutoNumberBatch, context.TracingService);
+                        context.Trace("Successfully enqueued batch");
+                        break;
+                    }
+                    catch (FaultException ex)
+                    {
+                        // Only Retry if the Error contains the Mult-ThreadedError
+                        if (ex.Message.Contains(AutoNumberRegister.MultiThreadedErrorMessage))
+                        {
+                            //Reload Setting
+                            context.Trace("Conflict Id found.  Retry #" + count++);
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        context.Trace("An unexpected exception occured of type " + ex.GetType().FullName);
+                        context.Trace("Message: " + ex.Message);
+                        throw;
+                    }
+                }
             }
         }
 

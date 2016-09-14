@@ -10,6 +10,7 @@ namespace DLaB.XrmAutoNumberGenerator
 {
     public class AutoNumberRegister : PluginBase
     {
+        public const string MultiThreadedErrorMessage = "Threading Error: An attempt was made to update the Next Number to be the same as it already is, or a previous number.This would result in potential duplicate Ids.";
         public AutoNumberRegister(string unsecureConfig, string secureConfig) : base(unsecureConfig, secureConfig) { }
         protected override PluginHandlerBase GetPluginHandler()
         {
@@ -50,7 +51,7 @@ namespace DLaB.XrmAutoNumberGenerator
                 SdkMessageId = createMessage,
                 SdkMessageFilterId = GetMessageFilterId(context, settings.EntityName, createMessage.Id),
                 EventHandler = GetPluginId(context),
-                StageEnum = sdkmessageprocessingstep_stage.Preoperation,
+                StageEnum = sdkmessageprocessingstep_stage.Prevalidation,
                 SupportedDeploymentEnum = sdkmessageprocessingstep_supporteddeployment.ServerOnly
             };
 
@@ -85,6 +86,7 @@ namespace DLaB.XrmAutoNumberGenerator
             {
                 case dlab_AutoNumberingState.Active:
                     // Register Plugin if it doesn't exist
+                    context.Trace("Processing Active State Request");
                     var settings = context.OrganizationService.GetEntity<dlab_AutoNumbering>(context.PrimaryEntity.Id);
                     if (settings.dlab_PluginStepId == null || context.SystemOrganizationService.GetEntityOrDefault<SdkMessageProcessingStep>(Guid.Parse(settings.dlab_PluginStepId)) == null)
                     {
@@ -93,13 +95,31 @@ namespace DLaB.XrmAutoNumberGenerator
                     break;
                 case dlab_AutoNumberingState.Inactive:
                     // Unregister Plugin
+                    context.Trace("Processing In-Active State Request");
                     UnregisterIncrementor(context);
                     break;
                 case null:
+                    context.Trace("Processing Non-State Related Change");
+                    AssertNonDuplicateId(context, target);
                     break;
                 default:
                     throw new EnumCaseUndefinedException<dlab_AutoNumberingState>(target.statecode.GetValueOrDefault());
             }
+        }
+
+        private void AssertNonDuplicateId(LocalPluginContext context, dlab_AutoNumbering target)
+        {
+            if (target.dlab_NextNumber == null)
+            {
+                return;
+            }
+            var preImage = context.GetPreEntity<dlab_AutoNumbering>();
+            preImage.AssertContainsAllNonNull(dlab_AutoNumbering.Fields.dlab_NextNumber);
+            if (context.Depth > 1 && target.dlab_NextNumber <= preImage.dlab_NextNumber)
+            {
+                throw new InvalidPluginExecutionException(AutoNumberRegister.MultiThreadedErrorMessage);
+            }
+            context.TraceFormat("Updating Next Number from {0} to {1}", preImage.dlab_NextNumber, target.dlab_NextNumber);
         }
 
         private EntityReference GetCreateMessageId(LocalPluginContext context)

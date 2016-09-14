@@ -1,0 +1,1 @@
+SolutionPackager.exe /action:Pack /zipfile:".\AutoNumberGenerator_1_0_0_0.zip" /folder:".\AutoNumberGenerator" /packagetype:Both

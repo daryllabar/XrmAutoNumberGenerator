@@ -5,7 +5,7 @@ namespace DLaB.XrmAutoNumberGenerator
 {
     public abstract class PluginHandlerBase : GenericPluginHandlerBase<LocalPluginContext>
     {
-        protected override LocalPluginContext CreateLocalPluginContext(IServiceProvider serviceProvider)
+        protected override LocalPluginContext CreatePluginContext(IServiceProvider serviceProvider)
         {
             return new LocalPluginContext(serviceProvider, this);
         }

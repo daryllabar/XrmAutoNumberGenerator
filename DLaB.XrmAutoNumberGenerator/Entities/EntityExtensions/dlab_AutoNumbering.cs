@@ -32,23 +32,25 @@ namespace DLaB.XrmAutoNumberGenerator.Entities
         /// Queues the generated values in the Batch using the settings.  Returns the most current Setting Value
         /// </summary>
         /// <returns></returns>
-        public static dlab_AutoNumbering EnqueueNextBatch(IOrganizationService service, dlab_AutoNumbering setting, Queue<string> queue)
+        public static dlab_AutoNumbering EnqueueNextBatch(IOrganizationService service, dlab_AutoNumbering setting, Queue<string> queue, ITracingService log)
         {
             int currentNumber;
             if (string.IsNullOrWhiteSpace(setting.RowVersion))
             {
-                // ***** Fixed in 7.1.1.4309 *****
-                // CRM 7.1.1.4210 currently has a bugg where the row version is not being returned from within a plugin.
+                log.Trace("No Row Version found.  Performing Non-Thread Safe Update.");
+                // CRM 7.1.1.4210 currently has a bug where the row version is not being returned from within a plugin.
                 // This should get fixed in the near future.  This will serve as a stop gap until then
-                //setting = service.GetEntity<dlab_AutoNumbering>(setting.Id);
-                //currentNumber = setting.IncrementNextNumber();
-                //service.Update(setting.CreateUpdateNextNumberEntity());
-                //setting.EnqueueBatchValues(queue, currentNumber);
-                //return setting;
-                throw new InvalidPluginExecutionException("Row Version returned from the server was null!  Unable to guarantee Uniqueness!  This was a bug in 7.1.1.4210 that was fixed in 7.1.1.4309");
+                setting = service.GetEntity<dlab_AutoNumbering>(setting.Id);
+                currentNumber = setting.IncrementNextNumber();
+                log.Trace("Grabbing values {0} to {1} and updating setting.", currentNumber, setting.dlab_NextNumber - 1);
+                service.Update(setting.CreateUpdateNextNumberEntity());
+                setting.EnqueueBatchValues(queue, currentNumber);
+                return setting;
             }
 
+            log.Trace("Row Version found.  Performing Thread Safe Update.");
             currentNumber = setting.IncrementNextNumber();
+            log.Trace("Grabbing values {0} to {1} and updating setting.", currentNumber, setting.dlab_NextNumber - 1);
             service.OptimisticUpdate(
                 setting.CreateUpdateNextNumberEntity(),
                 s =>
@@ -87,17 +89,21 @@ namespace DLaB.XrmAutoNumberGenerator.Entities
             return new dlab_AutoNumbering
             {
                 Id = Id,
-                dlab_NextNumber = dlab_NextNumber
+                dlab_NextNumber = dlab_NextNumber,
+                RowVersion = RowVersion
             };
         }
 
         private string GenerateFormattedNumber(int currentNumber)
         {
-            var number = (dlab_PadWithZeros.GetValueOrDefault(false)
-                ? currentNumber.ToString().PadLeft(dlab_FixedNumberSize.GetValueOrDefault(1), '0')
-                : currentNumber.ToString());
-            return
-                $"{dlab_Prefix}{number}{dlab_Postfix}";
+            return 
+                dlab_Prefix +
+                (
+                    dlab_PadWithZeros.GetValueOrDefault(false) 
+                        ? currentNumber.ToString().PadLeft(dlab_FixedNumberSize.GetValueOrDefault(1), '0') 
+                        : currentNumber.ToString()
+                ) +
+                dlab_Postfix;
         }
 
         /// <summary>
