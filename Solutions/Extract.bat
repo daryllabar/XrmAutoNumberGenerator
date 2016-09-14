@@ -1,1 +1,1 @@
-SolutionPackager.exe /action:Extract /zipfile:AutoNumberGenerator_1_0_0_0.zip /folder:".\AutoNumberGenerator" /packagetype:Both /clobber
+SolutionPackager.exe /action:Extract /zipfile:AutoNumberGenerator.zip /folder:".\AutoNumberGenerator" /packagetype:Both /clobber

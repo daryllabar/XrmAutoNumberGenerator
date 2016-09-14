@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Entity>
   <Name LocalizedName="Auto Numbering" OriginalName="Auto Numbering">dlab_AutoNumbering</Name>
-  <ObjectTypeCode>10005</ObjectTypeCode>
+  <ObjectTypeCode>10006</ObjectTypeCode>
   <EntityInfo>
     <entity Name="dlab_AutoNumbering">
       <LocalizedNames>
@@ -285,6 +285,7 @@
           <IsSortableEnabled>0</IsSortableEnabled>
           <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <Format></Format>
           <MinValue>0</MinValue>
           <MaxValue>90</MaxValue>
           <displaynames>
@@ -318,6 +319,7 @@
           <IsSortableEnabled>0</IsSortableEnabled>
           <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <Format></Format>
           <MinValue>1</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
@@ -385,6 +387,7 @@
           <IsSortableEnabled>0</IsSortableEnabled>
           <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <Format></Format>
           <MinValue>-2147483648</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
@@ -473,6 +476,7 @@
           <IsSortableEnabled>0</IsSortableEnabled>
           <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <Format></Format>
           <MinValue>0</MinValue>
           <MaxValue>2147483647</MaxValue>
           <displaynames>
@@ -608,6 +612,7 @@
           <IsSortableEnabled>0</IsSortableEnabled>
           <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <Format></Format>
           <MinValue>1</MinValue>
           <MaxValue>10000</MaxValue>
           <displaynames>
@@ -765,6 +770,7 @@
           <IsSortableEnabled>0</IsSortableEnabled>
           <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
           <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <LookupStyle>single</LookupStyle>
           <LookupTypes />
           <displaynames>
             <displayname description="Organization Id" languagecode="1033" />
@@ -992,6 +998,8 @@
       <IsDocumentManagementEnabled>0</IsDocumentManagementEnabled>
       <IsOneNoteIntegrationEnabled>0</IsOneNoteIntegrationEnabled>
       <IsKnowledgeManagementEnabled>0</IsKnowledgeManagementEnabled>
+      <IsSLAEnabled>0</IsSLAEnabled>
+      <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
       <OwnershipTypeMask>OrgOwned</OwnershipTypeMask>
       <IsAuditEnabled>1</IsAuditEnabled>
       <IsActivity>0</IsActivity>
@@ -1005,12 +1013,13 @@
       <IsReadOnlyInMobileClient>0</IsReadOnlyInMobileClient>
       <IsOfflineInMobileClient>0</IsOfflineInMobileClient>
       <DaysSinceRecordLastModified>0</DaysSinceRecordLastModified>
+      <MobileOfflineFilters></MobileOfflineFilters>
       <IsMapiGridEnabled>1</IsMapiGridEnabled>
       <IsReadingPaneEnabled>0</IsReadingPaneEnabled>
       <IsQuickCreateEnabled>0</IsQuickCreateEnabled>
       <SyncToExternalSearchIndex>0</SyncToExternalSearchIndex>
       <IntroducedVersion>1.0.0.0</IntroducedVersion>
-      <IsCustomizable>0</IsCustomizable>
+      <IsCustomizable>1</IsCustomizable>
       <IsRenameable>1</IsRenameable>
       <IsMappable>1</IsMappable>
       <CanModifyAuditSettings>1</CanModifyAuditSettings>
@@ -1033,7 +1042,9 @@
       <EnforceStateTransitions>0</EnforceStateTransitions>
       <CanChangeHierarchicalRelationship>1</CanChangeHierarchicalRelationship>
       <EntityHelpUrlEnabled>0</EntityHelpUrlEnabled>
+      <EntityHelpUrl></EntityHelpUrl>
       <ChangeTrackingEnabled>0</ChangeTrackingEnabled>
+      <CanChangeTrackingBeEnabled>1</CanChangeTrackingBeEnabled>
       <IsEnabledForExternalChannels>0</IsEnabledForExternalChannels>
     </entity>
   </EntityInfo>
@@ -1042,7 +1053,7 @@
   <RibbonDiffXml />
   <CustomControlDefaultConfigs>
     <CustomControlDefaultConfig>
-      <PrimaryEntityTypeCode>10005</PrimaryEntityTypeCode>
+      <PrimaryEntityTypeCode>10006</PrimaryEntityTypeCode>
       <CustomControlDefaultConfigId>{acd21583-0fa9-e511-80db-6c3be5a8dad0}</CustomControlDefaultConfigId>
       <ControlDescriptionXML>
         <controlDescriptions />
