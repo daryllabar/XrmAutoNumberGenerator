@@ -43,7 +43,7 @@ namespace DLaB.XrmAutoNumberGenerator
 
         public override void RegisterEvents()
         {
-            RegisteredEvents.AddRange(new RegisteredEventBuilder(PipelineStage.PreValidation, MessageType.Create).Build());
+            RegisteredEvents.AddRange(new RegisteredEventBuilder(PipelineStage.PreOperation, MessageType.Create).Build());
         }
 
         protected override void ExecuteInternal(LocalPluginContext context)
