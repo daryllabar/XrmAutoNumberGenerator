@@ -51,7 +51,7 @@ namespace DLaB.XrmAutoNumberGenerator
                 SdkMessageId = createMessage,
                 SdkMessageFilterId = GetMessageFilterId(context, settings.EntityName, createMessage.Id),
                 EventHandler = GetPluginId(context),
-                StageEnum = sdkmessageprocessingstep_stage.Prevalidation,
+                StageEnum = sdkmessageprocessingstep_stage.Preoperation,
                 SupportedDeploymentEnum = sdkmessageprocessingstep_supporteddeployment.ServerOnly
             };
 
