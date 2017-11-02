@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SdkMessageProcessingStep Name="DLaB.XrmAutoNumberGenerator.AutoNumberRegister: Create of dlab_autonumbering" SdkMessageProcessingStepId="{2a15647f-96ab-e511-80e1-6c3be5a8a258}">
-  <PluginTypeName>DLaB.XrmAutoNumberGenerator.AutoNumberRegister, DLaB.XrmAutoNumberGenerator, Version=1.0.0.3, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89</PluginTypeName>
+  <PluginTypeName>DLaB.XrmAutoNumberGenerator.AutoNumberRegister, DLaB.XrmAutoNumberGenerator, Version=1.0.0.4, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89</PluginTypeName>
   <PrimaryEntity>dlab_autonumbering</PrimaryEntity>
   <AsyncAutoDelete>0</AsyncAutoDelete>
   <Description>DLaB.XrmAutoNumberGenerator.AutoNumberRegister: Create of dlab_autonumbering</Description>

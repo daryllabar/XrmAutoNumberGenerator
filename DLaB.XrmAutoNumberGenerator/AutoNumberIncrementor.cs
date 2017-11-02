@@ -124,7 +124,7 @@ namespace DLaB.XrmAutoNumberGenerator
                     }
                 }
 
-                var value = context.GetSharedVariable<string>(GetKey(context, manager.Setting.FullName));
+                var value = context.GetFirstSharedVariable<string>(GetKey(context, manager.Setting.FullName));
                 if (string.IsNullOrWhiteSpace(value))
                 {
                     context.Trace("No value found for Pre-Operation, unable to set " + manager.Setting.FullName);
