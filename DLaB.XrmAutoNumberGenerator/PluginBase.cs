@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DLaB.Xrm.Plugin;
 
 namespace DLaB.XrmAutoNumberGenerator
@@ -15,7 +12,7 @@ namespace DLaB.XrmAutoNumberGenerator
 
         private String SecureConfig { get; set; }
         private String UnsecureConfig { get; set; }
-        public IEnumerable<RegisteredEvent> RegisteredEvents { get { return ThreadSafeGetOrCreateHandler().RegisteredEvents; } }
+        public IEnumerable<RegisteredEvent> RegisteredEvents => ThreadSafeGetOrCreateHandler().RegisteredEvents;
 
         protected PluginBase(string unsecureConfig, string secureConfig)
         {

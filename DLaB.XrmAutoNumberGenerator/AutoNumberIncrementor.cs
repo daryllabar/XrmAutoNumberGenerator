@@ -13,6 +13,11 @@ namespace DLaB.XrmAutoNumberGenerator
 {
     public class AutoNumberIncrementor : PluginBase
     {
+        /// <summary>
+        /// For Unit Testing only
+        /// </summary>
+        public bool DisallowStaticCache { get; set; }
+
         #region Constructors
 
         public AutoNumberIncrementor() : this(null, null)
@@ -27,36 +32,134 @@ namespace DLaB.XrmAutoNumberGenerator
 
         protected override PluginHandlerBase GetPluginHandler()
         {
-            return new AutoNumberIncrementorLogic();
+            return new AutoNumberIncrementorLogic(DisallowStaticCache);
         }
     }
 
     internal class AutoNumberIncrementorLogic : PluginHandlerBase
     {
+        private readonly bool _disallowStaticCache;
         private readonly object _settingLock = new object();
-        private static ConcurrentDictionary<string, AutoNumberManager[]> AutoNumberManagersByEntity { get; set; }
+        private static ConcurrentDictionary<string, AutoNumberManager[]> AutoNumberManagersByEntity { get; }
 
         static AutoNumberIncrementorLogic()
         {
             AutoNumberManagersByEntity = new ConcurrentDictionary<string, AutoNumberManager[]>();
         }
 
+        public AutoNumberIncrementorLogic(bool disallowStaticCache)
+        {
+            _disallowStaticCache = disallowStaticCache;
+        }
+
+        protected override void PostExecute(IExtendedPluginContext context)
+        {
+            if (_disallowStaticCache)
+            {
+                AutoNumberManagersByEntity.Clear();
+            }
+            base.PostExecute(context);
+        }
+
         public override void RegisterEvents()
         {
-            RegisteredEvents.AddRange(new RegisteredEventBuilder(PipelineStage.PreValidation, MessageType.Create).Build());
+            RegisteredEvents.AddRange(new RegisteredEventBuilder(PipelineStage.PreValidation, Any).Build());
+            RegisteredEvents.AddRange(new RegisteredEventBuilder(PipelineStage.PreOperation, MessageType.Create)
+                .WithExecuteAction(ExecuteInTransactionForCustomEvent).Build());
+        }
+
+        private string GetKey(LocalPluginContext context, string name)
+        {
+            return $"{context.PluginTypeName}|{name}";
         }
 
         protected override void ExecuteInternal(LocalPluginContext context)
         {
-            var target = context.GetTarget<Entity>();
-            var autoNumberManagers = AutoNumberManagersByEntity.GetOrAddSafe(_settingLock, target.LogicalName,
-                logicalName => context.SystemOrganizationService.GetEntities<dlab_AutoNumbering>(dlab_AutoNumbering.Fields.dlab_EntityName, logicalName).
-                    Select(s => new AutoNumberManager(s)).ToArray());
+            if (string.IsNullOrWhiteSpace(UnsecureConfig) && !context.IsInTransaction)
+            {
+                ExecuteForEntity(context, context.GetTarget<Entity>());
+            }
+            else if (context.IsInTransaction)
+            {
+                ExecuteInTransactionForCustomEvent(context);
+            }
+            else { 
+                foreach (var logicalName in UnsecureConfig.Split(',', '|'))
+                {
+                    ExecuteBeforeTransactionForCustomEvent(context, logicalName);
+                }
+            }
+        }
+
+        private AutoNumberManager[] GetAutoNumberManagers(LocalPluginContext context, string logicalName)
+        {
+            var autoNumberManagers = AutoNumberManagersByEntity.GetOrAddSafe(_settingLock, logicalName,
+                n => context.SystemOrganizationService
+                    .GetEntities<dlab_AutoNumbering>(dlab_AutoNumbering.Fields.dlab_EntityName, n)
+                    .Select(s => new AutoNumberManager(s)).ToArray());
 
             if (autoNumberManagers.Length == 0)
             {
-                throw new InvalidPluginExecutionException("No Auto-Number Settings found for Entity " + target.LogicalName);
+                throw new InvalidPluginExecutionException("No Auto-Number Settings found for Entity " + logicalName);
             }
+
+            return autoNumberManagers;
+        }
+
+        private void ExecuteInTransactionForCustomEvent(LocalPluginContext context)
+        {
+            var managers = GetAutoNumberManagers(context, context.PrimaryEntityName);
+            var target = context.GetTarget<Entity>();
+            // ReSharper disable once ForCanBeConvertedToForeach - Not sure if a foreach enumeration is thread safe
+            for (var i = 0; i < managers.Length; i++)
+            {
+                var manager = managers[i];
+                // Lock here so the settings entity won't be updated in the middle of processing the record
+                lock (manager)
+                {
+                    if (manager.Setting.UseInitializedValue(target))
+                    {
+                        context.Trace(manager.Setting.FullName + " already contains a value, and will not be overriden");
+                        continue;
+                    }
+                }
+
+                var value = context.GetSharedVariable<string>(GetKey(context, manager.Setting.FullName));
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    context.Trace("No value found for Pre-Operation, unable to set " + manager.Setting.FullName);
+                    context.Trace("This is normally due to another plugin triggering the create of the entity, and the prevalidation either not running, or running in the context of a transaction.");
+                    context.Trace("Manually register the AutoNumberIncrementor for the parent event/action.");
+                    context.Trace(context.GetContextInfo());
+                }
+                else
+                {
+                    context.Trace($"Value {value} found for Pre-Operation, setting {manager.Setting.FullName}.");
+                    target[manager.Setting.AttributeName] = value;
+                }
+            }
+        }
+
+        private void ExecuteBeforeTransactionForCustomEvent(LocalPluginContext context, string logicalName)
+        {
+            var managers = GetAutoNumberManagers(context, logicalName.ToLower());
+
+            // ReSharper disable once ForCanBeConvertedToForeach - Not sure if a foreach enumeration is thread safe
+            for (var i = 0; i < managers.Length; i++)
+            {
+                var manager = managers[i];
+                // Lock here so the settings entity won't be updated in the middle of processing the record
+                lock (manager)
+                {
+                    var number = GenerateAutoNumber(context, manager);
+                    context.SharedVariables[GetKey(context, manager.Setting.FullName)] = number;
+                }
+            }
+        }
+
+        private void ExecuteForEntity(LocalPluginContext context, Entity target)
+        {
+            var autoNumberManagers = GetAutoNumberManagers(context, target.LogicalName);
 
             // ReSharper disable once ForCanBeConvertedToForeach - Not sure if a foreach enumeration is thread safe
             for (var i = 0; i < autoNumberManagers.Length; i++)
@@ -65,28 +168,23 @@ namespace DLaB.XrmAutoNumberGenerator
                 // Lock here so the settings entity won't be updated in the middle of processing the record
                 lock (manager)
                 {
-                    SetAutoNumber(context, target, manager);
+                    if (manager.Setting.UseInitializedValue(target))
+                    {
+                        context.Trace(manager.Setting.FullName + " already contains a value, and will not be overriden");
+                        continue;
+                    }
+
+                    target[manager.Setting.AttributeName] = GenerateAutoNumber(context, manager);
                 }
             }
         }
 
-        private void SetAutoNumber(LocalPluginContext context, Entity target, AutoNumberManager manager)
+        private static string GenerateAutoNumber(LocalPluginContext context, AutoNumberManager manager)
         {
-            var setting = manager.Setting;
-
-            if (setting.UseInitializedValue(target))
-            {
-                context.TraceFormat(
-                    "The Attribute {0} in the Entity {1} already contains a value, and will not be overriden",
-                    setting.AttributeName, setting.EntityName);
-                return;
-            }
-
             // Attempt to use Batched Auto Number
             if (manager.AutoNumberBatch.Count == 0)
             {
-                context.TraceFormat("No batched value found.  Repopulating batch for {0}.{1}", setting.EntityName,
-                    setting.AttributeName);
+                context.Trace("No batched value found.  Repopulating batch for " + manager.Setting.FullName);
                 manager.EnqueueBatch(context);
 
                 if (manager.AutoNumberBatch.Count == 0)
@@ -94,8 +192,9 @@ namespace DLaB.XrmAutoNumberGenerator
                     throw new InvalidPluginExecutionException("EnqueueBatch never enqueued a new value!");
                 }
             }
-
-            target[setting.AttributeName] = manager.AutoNumberBatch.Dequeue();
+            var number = manager.AutoNumberBatch.Dequeue();
+            context.Trace($"Value '{number}' dequeued from generated values.");
+            return number;
         }
 
         private class AutoNumberManager

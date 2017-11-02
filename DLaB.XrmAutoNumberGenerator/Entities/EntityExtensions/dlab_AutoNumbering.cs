@@ -25,6 +25,10 @@ namespace DLaB.XrmAutoNumberGenerator.Entities
         /// </value>
         public string EntityName => dlab_EntityName.ToLower();
 
+        /// <summary>
+        /// Returns EntityName.AttributeName
+        /// </summary>
+        public string FullName => $"{EntityName}.{AttributeName}";
 
         public int BatchStep => dlab_ServerBatchSize.GetValueOrDefault(1) * dlab_IncrementStepSize.GetValueOrDefault(1);
 
@@ -37,9 +41,8 @@ namespace DLaB.XrmAutoNumberGenerator.Entities
             int currentNumber;
             if (string.IsNullOrWhiteSpace(setting.RowVersion))
             {
+                // Some older versions of CRM don't contain RowVersions
                 log.Trace("No Row Version found.  Performing Non-Thread Safe Update.");
-                // CRM 7.1.1.4210 currently has a bug where the row version is not being returned from within a plugin.
-                // This should get fixed in the near future.  This will serve as a stop gap until then
                 setting = service.GetEntity<dlab_AutoNumbering>(setting.Id);
                 currentNumber = setting.IncrementNextNumber();
                 log.Trace("Grabbing values {0} to {1} and updating setting.", currentNumber, setting.dlab_NextNumber - 1);
@@ -113,9 +116,9 @@ namespace DLaB.XrmAutoNumberGenerator.Entities
         /// <returns></returns>
         public bool UseInitializedValue(Entity entity)
         {
-            return !dlab_AllowExternalInitialization.GetValueOrDefault() &&
+            return dlab_AllowExternalInitialization.GetValueOrDefault() &&
                    entity.Contains(AttributeName) &&
-                   string.IsNullOrWhiteSpace((entity[AttributeName] ?? string.Empty).ToString());
+                   !string.IsNullOrWhiteSpace(entity.GetAttributeValue<string>(AttributeName));
         }
     }
 }

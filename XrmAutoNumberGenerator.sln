@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.XrmAutoNumberGenerator", "DLaB.XrmAutoNumberGenerator\DLaB.XrmAutoNumberGenerator.csproj", "{16EA88A8-1A6D-4538-8902-2C3474FCA827}"
 EndProject
@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions", "Solutions", "{
 		Solutions\SolutionPackager.exe = Solutions\SolutionPackager.exe
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.XrmAutoNumberGenerator.Tests", "DLaB.XrmAutoNumberGenerator.Tests\DLaB.XrmAutoNumberGenerator.Tests.csproj", "{0875C4AD-DAE5-455E-8A13-C8C07BCC859C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLaB.XrmAutoNumberGenerator.Test", "DLaB.XrmAutoNumberGenerator.Test\DLaB.XrmAutoNumberGenerator.Test.csproj", "{CCB42164-24CF-442E-95FE-EAF367E09BF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug No ILMerge|Any CPU = Debug No ILMerge|Any CPU
@@ -39,8 +43,23 @@ Global
 		{44748D2E-F38C-4040-93F7-C7F4666D0654}.Debug No ILMerge|Any CPU.ActiveCfg = Debug No ILMerge|Any CPU
 		{44748D2E-F38C-4040-93F7-C7F4666D0654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{44748D2E-F38C-4040-93F7-C7F4666D0654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0875C4AD-DAE5-455E-8A13-C8C07BCC859C}.Debug No ILMerge|Any CPU.ActiveCfg = Debug|Any CPU
+		{0875C4AD-DAE5-455E-8A13-C8C07BCC859C}.Debug No ILMerge|Any CPU.Build.0 = Debug|Any CPU
+		{0875C4AD-DAE5-455E-8A13-C8C07BCC859C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0875C4AD-DAE5-455E-8A13-C8C07BCC859C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0875C4AD-DAE5-455E-8A13-C8C07BCC859C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0875C4AD-DAE5-455E-8A13-C8C07BCC859C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB42164-24CF-442E-95FE-EAF367E09BF4}.Debug No ILMerge|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB42164-24CF-442E-95FE-EAF367E09BF4}.Debug No ILMerge|Any CPU.Build.0 = Debug|Any CPU
+		{CCB42164-24CF-442E-95FE-EAF367E09BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB42164-24CF-442E-95FE-EAF367E09BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB42164-24CF-442E-95FE-EAF367E09BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB42164-24CF-442E-95FE-EAF367E09BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70034184-C20F-4121-96AA-3377DDCCBA00}
 	EndGlobalSection
 EndGlobal

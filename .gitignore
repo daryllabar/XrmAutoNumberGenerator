@@ -211,3 +211,4 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 /WebResources/dlab_/scripts/DLaB.AutoNumbering.js
+/DLaB.XrmAutoNumberGenerator.Test/UnitTestSettings.user.config
