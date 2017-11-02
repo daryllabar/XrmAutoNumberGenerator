@@ -17,8 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External References", "Exte
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions", "Solutions", "{5B5B8EFA-5D14-42BF-A041-46342BDD9545}"
 	ProjectSection(SolutionItems) = preProject
-		Solutions\AutoNumberGenerator_1_0_0_0.zip = Solutions\AutoNumberGenerator_1_0_0_0.zip
-		Solutions\AutoNumberGenerator_1_0_0_0_managed.zip = Solutions\AutoNumberGenerator_1_0_0_0_managed.zip
+		Solutions\AutoNumberGenerator.zip = Solutions\AutoNumberGenerator.zip
+		Solutions\AutoNumberGenerator_managed.zip = Solutions\AutoNumberGenerator_managed.zip
 		Solutions\Extract.bat = Solutions\Extract.bat
 		Solutions\SolutionPackager.exe = Solutions\SolutionPackager.exe
 	EndProjectSection
