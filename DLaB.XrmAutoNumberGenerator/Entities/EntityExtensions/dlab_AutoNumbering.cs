@@ -36,18 +36,39 @@ namespace DLaB.XrmAutoNumberGenerator.Entities
         /// Queues the generated values in the Batch using the settings.  Returns the most current Setting Value
         /// </summary>
         /// <returns></returns>
-        public static dlab_AutoNumbering EnqueueNextBatch(IOrganizationService service, dlab_AutoNumbering setting, Queue<string> queue, ITracingService log)
+        public static dlab_AutoNumbering EnqueueNextBatch(IOrganizationService service, dlab_AutoNumbering setting, Queue<string> queue, ITracingService log, bool isInTransaction)
         {
             int currentNumber;
-            if (string.IsNullOrWhiteSpace(setting.RowVersion))
+            if (string.IsNullOrWhiteSpace(setting.RowVersion) || isInTransaction)
             {
-                // Some older versions of CRM don't contain RowVersions
-                log.Trace("No Row Version found.  Performing Non-Thread Safe Update.");
+                if (isInTransaction)
+                {
+                    log.Trace("Executing within transaction, Can't use the OptimisticUpdate.  Falling Back to Manual Database Lock");
+                }
+                else
+                {
+                    // Some older versions of CRM don't contain RowVersions
+                    log.Trace("No Row Version found.  Performing Non-Thread Safe Update.");
+                }
+
+                var stopwatch = new System.Diagnostics.Stopwatch();
+                stopwatch.Start();
+                // Update Entity to lock it
+                service.Update(new dlab_AutoNumbering
+                {
+                    Id = setting.Id,
+                    dlab_EntityName = setting.dlab_EntityName
+                });
+
                 setting = service.GetEntity<dlab_AutoNumbering>(setting.Id);
                 currentNumber = setting.IncrementNextNumber();
                 log.Trace("Grabbing values {0} to {1} and updating setting.", currentNumber, setting.dlab_NextNumber - 1);
                 service.Update(setting.CreateUpdateNextNumberEntity());
                 setting.EnqueueBatchValues(queue, currentNumber);
+
+                stopwatch.Stop();
+
+                log.Trace($"Time to retrieve and Update AutoNumber {stopwatch.ElapsedMilliseconds} ms");
                 return setting;
             }
 

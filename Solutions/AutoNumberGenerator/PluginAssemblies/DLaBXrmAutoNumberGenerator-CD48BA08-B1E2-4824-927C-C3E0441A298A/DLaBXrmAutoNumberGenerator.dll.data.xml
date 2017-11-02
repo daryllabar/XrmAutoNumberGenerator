@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<PluginAssembly FullName="DLaB.XrmAutoNumberGenerator, Version=1.0.0.4, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89" CustomizationLevel="1">
+<PluginAssembly FullName="DLaB.XrmAutoNumberGenerator, Version=1.0.0.5, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89" CustomizationLevel="1">
   <IsolationMode>2</IsolationMode>
   <SourceType>0</SourceType>
   <IntroducedVersion>1.0</IntroducedVersion>
   <FileName>/PluginAssemblies/DLaBXrmAutoNumberGenerator-CD48BA08-B1E2-4824-927C-C3E0441A298A/DLaBXrmAutoNumberGenerator.dll</FileName>
   <PluginTypes>
-    <PluginType AssemblyQualifiedName="DLaB.XrmAutoNumberGenerator.AutoNumberIncrementor, DLaB.XrmAutoNumberGenerator, Version=1.0.0.4, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89" Name="DLaB.XrmAutoNumberGenerator.AutoNumberIncrementor">
+    <PluginType AssemblyQualifiedName="DLaB.XrmAutoNumberGenerator.AutoNumberIncrementor, DLaB.XrmAutoNumberGenerator, Version=1.0.0.5, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89" Name="DLaB.XrmAutoNumberGenerator.AutoNumberIncrementor">
       <FriendlyName>ac415b12-2085-4c41-8d2e-2046a6398f88</FriendlyName>
     </PluginType>
-    <PluginType AssemblyQualifiedName="DLaB.XrmAutoNumberGenerator.AutoNumberRegister, DLaB.XrmAutoNumberGenerator, Version=1.0.0.4, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89" Name="DLaB.XrmAutoNumberGenerator.AutoNumberRegister">
+    <PluginType AssemblyQualifiedName="DLaB.XrmAutoNumberGenerator.AutoNumberRegister, DLaB.XrmAutoNumberGenerator, Version=1.0.0.5, Culture=neutral, PublicKeyToken=f7aa25e7f5f86d89" Name="DLaB.XrmAutoNumberGenerator.AutoNumberRegister">
       <FriendlyName>f538c8e0-d228-4ecf-a58e-f6f52f04f5fa</FriendlyName>
     </PluginType>
   </PluginTypes>

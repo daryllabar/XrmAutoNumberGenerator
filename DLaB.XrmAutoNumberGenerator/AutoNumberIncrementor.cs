@@ -75,7 +75,7 @@ namespace DLaB.XrmAutoNumberGenerator
 
         protected override void ExecuteInternal(LocalPluginContext context)
         {
-            if (string.IsNullOrWhiteSpace(UnsecureConfig) && !context.IsInTransaction)
+            if (string.IsNullOrWhiteSpace(UnsecureConfig))
             {
                 ExecuteForEntity(context, context.GetTarget<Entity>());
             }
@@ -219,7 +219,7 @@ namespace DLaB.XrmAutoNumberGenerator
                 {
                     try
                     {
-                        Setting = dlab_AutoNumbering.EnqueueNextBatch(context.SystemOrganizationService, Setting, AutoNumberBatch, context.TracingService);
+                        Setting = dlab_AutoNumbering.EnqueueNextBatch(context.SystemOrganizationService, Setting, AutoNumberBatch, context.TracingService, context.IsInTransaction);
                         context.Trace("Successfully enqueued batch");
                         break;
                     }
