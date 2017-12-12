@@ -127,10 +127,19 @@ namespace DLaB.XrmAutoNumberGenerator
                 var value = context.GetFirstSharedVariable<string>(GetKey(context, manager.Setting.FullName));
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    context.Trace("No value found for Pre-Operation, unable to set " + manager.Setting.FullName);
-                    context.Trace("This is normally due to another plugin triggering the create of the entity, and the prevalidation either not running, or running in the context of a transaction.");
-                    context.Trace("Manually register the AutoNumberIncrementor for the parent event/action.");
-                    context.Trace(context.GetContextInfo());
+                    if (UnsecureConfig?.Contains("AllowInTransactionGeneration") == true)
+                    {
+                        value = GenerateAutoNumber(context, manager);
+                        context.Trace($"Value {value} generated for Pre-Operation, setting {manager.Setting.FullName}.");
+                        target[manager.Setting.AttributeName] = value;
+                    }
+                    else
+                    {
+                        context.Trace("No value found for Pre-Operation, unable to set " + manager.Setting.FullName);
+                        context.Trace("This is normally due to another plugin triggering the create of the entity, and the prevalidation either not running, or running in the context of a transaction.");
+                        context.Trace("Manually register the AutoNumberIncrementor for the parent event/action.");
+                        context.Trace(context.GetContextInfo());
+                    }
                 }
                 else
                 {
